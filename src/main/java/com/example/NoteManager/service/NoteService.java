@@ -1,8 +1,9 @@
-package com.example.NoteManager.Service;
+package com.example.NoteManager.service;
 
 
 
-import com.example.NoteManager.Entity.Note;
+import com.example.NoteManager.entity.Note;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

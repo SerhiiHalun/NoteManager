@@ -1,4 +1,4 @@
-package com.example.NoteManager.Entity;
+package com.example.NoteManager.entity;
 
 import lombok.Data;
 

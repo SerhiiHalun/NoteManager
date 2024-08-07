@@ -1,10 +1,10 @@
-package com.example.NoteManager.Controller;
+package com.example.NoteManager.controller;
 
-import com.example.NoteManager.Entity.Note;
-import com.example.NoteManager.Service.NoteService;
+
+import com.example.NoteManager.entity.Note;
+import com.example.NoteManager.service.NoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
