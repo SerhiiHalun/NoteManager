@@ -1,7 +1,8 @@
 package com.example.NoteManager;
 
-import com.example.NoteManager.entity.Note;
 
+
+import com.example.NoteManager.entity.Note;
 import com.example.NoteManager.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -25,11 +26,14 @@ public class NoteManagerApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Note note1 = new Note();
+
 		note1.setTitle("First Note");
 		note1.setContent("This is the content of the first note.");
 		noteService.add(note1);
 
 		Note note2 = new Note();
+
+
 		note2.setTitle("Second Note");
 		note2.setContent("This is the content of the second note.");
 		noteService.add(note2);

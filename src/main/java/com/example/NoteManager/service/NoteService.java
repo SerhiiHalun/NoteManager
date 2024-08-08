@@ -2,8 +2,12 @@ package com.example.NoteManager.service;
 
 
 
-import com.example.NoteManager.entity.Note;
 
+
+
+import com.example.NoteManager.entity.Note;
+import com.example.NoteManager.repository.NoteRepository;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,42 +16,38 @@ import java.util.*;
 @Service
 @RequiredArgsConstructor
 public class NoteService {
-    private Map<Long, Note> notes = new HashMap<>();
-    private long currentId = 1;
+
+
+    private  final NoteRepository noteRepository;
+
+
+
     public List<Note> listAll(){
-        return new ArrayList<>(notes.values());
+        return noteRepository.findAll();
     }
     public Note add(Note note){
 
-        note.setId(currentId);
-        notes.put(currentId,note);
-        currentId++;
+        noteRepository.save(note);
 
         return note;
     }
     public void deleteById(long id){
-        if(notes.containsKey(id)){
-            notes.remove(id);
-        }else {
+        if (noteRepository.existsById(id)) {
+            noteRepository.deleteById(id);
+        } else {
             throw new NoSuchElementException("Note with id " + id + " not found.");
         }
-
     }
     public void update(Note note){
-        long id = note.getId();
-        if(notes.containsKey(id)){
-            notes.replace(id ,notes.get(id),note);
-        }else {
-            throw new NoSuchElementException("Note with id " + id + " not found.");
+        if (noteRepository.existsById(note.getId())) {
+            noteRepository.save(note);
+        } else {
+            throw new NoSuchElementException("Note with id " + note.getId() + " not found.");
         }
     }
     public Note getById(long id){
-        if(notes.containsKey(id)){
-            return notes.get(id);
-        }else {
-            throw new NoSuchElementException("Note with id " + id + " not found.");
-        }
-
+        return noteRepository.findById(id).orElseThrow(() ->
+                new NoSuchElementException("Note with id " + id + " not found."));
     }
 
 
