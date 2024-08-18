@@ -36,7 +36,7 @@ public class DefaultSecurityConfig {
                 .authenticated()
                 .and()
                 .formLogin()
-                .defaultSuccessUrl("/note/list", true)  
+                .defaultSuccessUrl("/note/list", true)
                 .and()
                 .httpBasic()
                 .and()
