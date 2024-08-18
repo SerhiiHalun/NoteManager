@@ -7,7 +7,6 @@ package com.example.NoteManager.service;
 
 import com.example.NoteManager.entity.Note;
 import com.example.NoteManager.repository.NoteRepository;
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
