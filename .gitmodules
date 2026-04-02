@@ -1,0 +1,6 @@
+[submodule "Uncertainty-API"]
+	path = Uncertainty-API
+	url = https://github.com/SerhiiHalun/Uncertainty-API.git
+[submodule "NoteManager-Core"]
+	path = NoteManager-Core
+	url = https://github.com/SerhiiHalun/NoteManager-Core.git
