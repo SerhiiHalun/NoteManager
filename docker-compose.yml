@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: note_manager_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  uncertainty-api:
+    build:
+      context: ./Uncertainty-API
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+
+  note-manager-core:
+    build:
+      context: ./NoteManager-Core
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+      - uncertainty-api
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/note_manager_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=pass
+      - UNCERTAINTY_API_URL=http://uncertainty-api:8000
+
+volumes:
+  postgres_data:
